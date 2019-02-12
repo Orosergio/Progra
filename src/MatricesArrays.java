@@ -45,7 +45,6 @@ public class MatricesArrays extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,9 +121,6 @@ public class MatricesArrays extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 190, 80));
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 300, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     //codigo    nombre  sueldo+ bonificaion+    comision+   igss-   descuento judicial-     ISR-       sueldo liquido
@@ -132,7 +128,7 @@ public class MatricesArrays extends javax.swing.JFrame {
     
         for (int i=0;i<10;i++){
             for(int j=2;j<6;j++){
-              int intrandom=(int)(Math.random()*10000)+1000; //GENERANDO NÚMEROS RANDOM
+              int intrandom=(int)(Math.random()*10001)+1000; //GENERANDO NÚMEROS RANDOM
                 matriz[i][j]=String.valueOf(intrandom);   //LLENANDO MATRIZ CON NUMEROS RANDOM
                 
             }
@@ -148,10 +144,12 @@ public class MatricesArrays extends javax.swing.JFrame {
             //ASIGNACION DE CODIGO
             matriz[i][0]=String.valueOf(i+1);
             //CALCULO ISR
-            if(Float.parseFloat(matriz[i][10])>=5000){
-               matriz[i][7]=String.valueOf(formato.format((Float.parseFloat(matriz[i][10])*3)/100));
-            }else if(Float.parseFloat(matriz[i][10])<5000){
-                matriz[i][7]=String.valueOf((Float.parseFloat(matriz[i][10])*5)/100);
+            if(Float.parseFloat(matriz[i][2])>=5000){
+               matriz[i][7]=String.valueOf(formato.format((Float.parseFloat(matriz[i][2])*5)/100));
+            }else if(Float.parseFloat(matriz[i][2])<5000){
+                matriz[i][7]=String.valueOf((Float.parseFloat(matriz[i][2])*3)/100);
+            }else if(Float.parseFloat(matriz[i][2])>10000){
+                matriz[i][7]=String.valueOf((Float.parseFloat(matriz[i][2])*0.07));
             }
             //SALDO LIQUIDO
             matriz[i][8]=String.valueOf(formato.format(Integer.parseInt(matriz[i][2])+Integer.parseInt(matriz[i][3])+Integer.parseInt(matriz[i][4])-Integer.parseInt(matriz[i][5])-Float.parseFloat(matriz[i][6])-Float.parseFloat(matriz[i][7])));
@@ -260,7 +258,6 @@ public class MatricesArrays extends javax.swing.JFrame {
     private javax.swing.JTable TablaPrincipal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
