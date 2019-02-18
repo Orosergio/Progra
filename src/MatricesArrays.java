@@ -19,7 +19,7 @@ public class MatricesArrays extends javax.swing.JFrame {
     /**
      * Creates new form MatricesArrays
      */ 
-    String matriz[][]=new String[10][11],intsumafila;
+    String matriz[][]=new String[10][12],intsumafila;
     String [] vectorLetras={"A","B","C","D","E"};
     int vectorSumadep[]=new int [5];
     DecimalFormat formato=new DecimalFormat("#.00");
@@ -132,15 +132,12 @@ public class MatricesArrays extends javax.swing.JFrame {
                 matriz[i][j]=String.valueOf(intrandom);   //LLENANDO MATRIZ CON NUMEROS RANDOM
                 
             }
-            //CALCULO IGSS
-            matriz[i][6]=String.valueOf(formato.format((Integer.parseInt(matriz[i][2])*4.83)/100));
+            asignacionNombres();
+            matriz[i][11]=JOptionPane.showInputDialog(null,"Paga IGSS? ");
+            igss();
             //CALCULO SIN ISR
             matriz[i][10]=String.valueOf(Integer.parseInt(matriz[i][2])+Integer.parseInt(matriz[i][3])+Integer.parseInt(matriz[i][4])-Integer.parseInt(matriz[i][5])-Float.parseFloat(matriz[i][6]));
-            //INGRESO DE NOMBRE
-            matriz[i][1]=JOptionPane.showInputDialog(null,"Nombre: ");
-            int intRandomdep=(int)(Math.random()*5)+0;
-            //ASIGNACION DE DEPARTAMENTO
-            matriz[i][9]=vectorLetras[intRandomdep];
+            asignacionDepartamentos();
             //ASIGNACION DE CODIGO
             matriz[i][0]=String.valueOf(i+1);
             //CALCULO ISR
@@ -158,7 +155,35 @@ public class MatricesArrays extends javax.swing.JFrame {
             
         }
        
+     
+      
+       this.MostrarMatriz(matriz,vectorLetras,vectorSumadep);
+    
+    }//GEN-LAST:event_jButton2ActionPerformed
+    public void iggs(){
         for(int i=0;i<10;i++){
+        if("SI".equals(matriz[i][11])){
+         //CALCULO IGSS
+            matriz[i][6]=String.valueOf(formato.format((Integer.parseInt(matriz[i][2])*4.83)/100));
+        }else if("NO".equals(matriz[i][11])){
+            matriz[i][6]="0";
+           
+        }
+        
+    }
+    
+    public void asignacionNombres(){
+    //INGRESO DE NOMBRE
+        for(int i=0;i<10;i++){
+               matriz[i][1]=JOptionPane.showInputDialog(null,"Nombre: ");
+        }
+         
+    }
+    public void asignacionDepartamentos(){
+       for(int i=0;i<10;i++){
+           int intRandomdep=(int)(Math.random()*5)+0;
+            //ASIGNACION DE DEPARTAMENTO
+            matriz[i][9]=vectorLetras[intRandomdep];
             if (matriz [i][9] == "A"){
             vectorSumadep[0]+= Integer.parseInt(matriz[i][4]);    
             }
@@ -176,11 +201,8 @@ public class MatricesArrays extends javax.swing.JFrame {
             }
         }
         
-      
-       this.MostrarMatriz(matriz,vectorLetras,vectorSumadep);
+    }
     
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         for(int i=0;i<10;i++){
             for(int j=0;j<11;j++){
