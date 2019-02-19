@@ -165,6 +165,7 @@ public void random(){
             matriz[i][6]="0";
             }else{
                 JOptionPane.showMessageDialog(null,"La opcion no existe");
+                --i;
             }
             //CALCULO IGSS
         }
