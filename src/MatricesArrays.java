@@ -102,19 +102,19 @@ public class MatricesArrays extends javax.swing.JFrame {
         TablaPrincipal.setFont(new java.awt.Font("Palatino Linotype", 0, 14)); // NOI18N
         TablaPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nombres", "Salario Base", "Bonificación", "Comisión", "Descuento Judicial", "IGSS", "ISR", "Saldo Liquido", "Departamento", "saldo sin ISR", "Paga IGSS?"
+                "Código", "Nombres", "Salario Base", "Bonificación", "Comisión", "Descuento Judicial", "IGSS", "ISR", "Saldo Liquido", "Departamento", "saldo sin ISR"
             }
         ));
         jScrollPane1.setViewportView(TablaPrincipal);
@@ -154,12 +154,17 @@ public void random(){
     
     public void iggs(){
         for(int i=0;i<10;i++){
-               matriz[i][11]=JOptionPane.showInputDialog(null,"Paga IGSS?\n1.- SI\n2.- NO");
-            if("1".equals(matriz[i][11]) ){
+               matriz[i][11]=JOptionPane.showInputDialog(null,"Paga "+matriz[i][1]+" IGSS?\n1.- SI\n2.- NO");
+            
+               
+               
+               if("1".equals(matriz[i][11]) ){
             matriz[i][6]=String.valueOf((Integer.parseInt(matriz[i][2])*4.83)/100);
         
             }else if("2".equals(matriz[i][11])){
             matriz[i][6]="0";
+            }else{
+                JOptionPane.showMessageDialog(null,"La opcion no existe");
             }
             //CALCULO IGSS
         }
@@ -260,7 +265,7 @@ public void asignacionLetras(){
      public void MostrarMatriz(String matrix[][],String vector[],int vecSuma[]){
         DefaultTableModel model = (DefaultTableModel) TablaPrincipal.getModel(); //Obteniendo modelo de JTable
         for(int i=0;i<10;i++){
-            for(int j=0;j<12;j++){
+            for(int j=0;j<11;j++){
                 TablaPrincipal.setValueAt(matriz[i][j], i, j); //Asignando valores de la matriz al JTable...
             }
         }
