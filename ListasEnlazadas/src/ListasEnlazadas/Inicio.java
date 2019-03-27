@@ -26,12 +26,15 @@ public class Inicio {
 	miLista.InsertarEnPrimero(40);
 	miLista.InsertarEnPrimero(60);
 	System.out.println(miLista.Listar());
-	System.out.println("borrar");
-	miLista.borrarUltimo();
-        miLista.borrarPrimero();
-	
-	System.out.println(miLista.Listar());
-// TODO code application logic here
+	System.out.println("--------------------\n\tInsertando nuevo número entre los elementos:");
+	//miLista.borrarUltimo();
+        //miLista.borrarPrimero();
+        //miLista.borrarPosicion(3);
+        miLista.insertarEntre(2, 150);//Posición 2, número 150
+        System.out.println(miLista.Listar());
+        System.out.println("\tLocalizando la posición de un número: ");
+        System.out.println(miLista.localizar(50));
+        	
     }
     
 }

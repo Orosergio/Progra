@@ -79,5 +79,40 @@ public class ListasEnlazadas
 			anterior.Siguiente=actual.Siguiente;
 		}
 	}
+        
+        public void insertarEntre(int pos, int Dato){
+                
+                Nodo Temporal=new Nodo(Dato); //Crea el nodo temporal
+                Nodo anterior=Primero;
+		Nodo actual=Primero;
+		int k=0;
+		if (pos>0)
+		{
+			while (k!=pos && actual.Siguiente != null)
+			{ //Ciclo para eliminar la posición e ir corriendo espacios
+				anterior=actual;
+				actual=actual.Siguiente;
+                                Temporal.Siguiente=actual;
+				k++;
+			}
+			//anterior.Siguiente=actual.Siguiente;
+              
+		anterior.Siguiente=Temporal;
+                actual=Temporal.Siguiente;
+                //Temporal.Siguiente=anterior.Siguiente; //corre al primero
+		//Primero=Temporal;   //lo coloca de primero
+		} 
+        }
+        
+        public int localizar(int Dato){
+                int s=0;
+		Nodo aux=Primero;
+		while (aux.info!=Dato)
+		{
+			aux=aux.Siguiente;
+                        s++;
+		}//Muesta los nodos, en lista
+		return(s);
+        }
 
 }
