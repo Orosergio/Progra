@@ -19,6 +19,7 @@ public class Hanoi {
     public static Pilas pPila1=new Pilas();
     public static Pilas pPila2=new Pilas();
     public static Pilas pPila3=new Pilas();
+    public static int topc;
     public static void main(String[] args) {
         int iCantidadDiscos;
         iCantidadDiscos=Integer.parseInt(JOptionPane.showInputDialog("Cuantos discos desea?"));
@@ -30,18 +31,74 @@ public class Hanoi {
     }          
     public static void PasosHanoi(int Numero, int iOrigen, int iAuxiliar, int iDestino){
         if (Numero==1) {
-          //origen a destino  
-        }else{
-            PasosHanoi(Numero-1,iOrigen,iDestino,iAuxiliar);
-            if (iOrigen==1) {
-                pPila1.POP();
-            }else if (iOrigen==2) {
-                 pPila2.POP();
-            }else if (iOrigen==3) {
-                pPila3.POP(); 
+          //origen a destino
+         // System.out.println("mover disco de " + iOrigen + " a " + iDestino);
+       
+         if(iOrigen==1){
+            topc=Integer.parseInt(pPila1.TOP()); 
+            pPila1.POP();
+            }
+            if(iOrigen==2){
+            topc=Integer.parseInt(pPila2.TOP()); 
+            pPila2.POP();
+            
+            } 
+            
+            if(iOrigen==3){
+            topc=Integer.parseInt(pPila3.TOP()); 
+            pPila3.POP();
             }
             
-            PasosHanoi(Numero-1,iAuxiliar,iOrigen,iDestino);
+            if(iDestino==1){
+                pPila1.PUSH(topc);
+            }
+            if(iDestino==2){
+                pPila2.PUSH(topc);
+            }
+            if(iDestino==3){
+                pPila3.PUSH(topc);
+            }
+           System.out.println("Origen: "+pPila1.Listar()+"\nAuxiliar: "+pPila2.Listar()+"\nDestino: "+pPila3.Listar());
+           
+            System.out.println("");
+        }else{
+            PasosHanoi(Numero-1,iOrigen,iDestino,iAuxiliar);
+           
+            System.out.println("Mover disco de "+iOrigen+" a " +iDestino);
+            if(iOrigen==1){
+            topc=Integer.parseInt(pPila1.TOP()); 
+            pPila1.POP();
+            }
+            if(iOrigen==2){
+            topc=Integer.parseInt(pPila2.TOP()); 
+            pPila2.POP();
+            
+            } 
+            
+            if(iOrigen==3){
+            topc=Integer.parseInt(pPila3.TOP()); 
+            pPila3.POP();
+            }
+            
+            if(iDestino==1){
+                pPila1.PUSH(topc);
+            }
+            if(iDestino==2){
+                pPila2.PUSH(topc);
+            }
+            if(iDestino==3){
+                pPila3.PUSH(topc);
+            }
+            System.out.println("\nOrigen: "+pPila1.Listar()+"\nAuxiliar: "+pPila2.Listar()+"\nDestino: "+pPila3.Listar());    
+             try{
+            Thread.sleep(500);
+        }catch(InterruptedException e){
+            
         }
+            PasosHanoi(Numero-1,iAuxiliar,iOrigen,iDestino);
+        
+        }
+        
+        
     }  
 }
