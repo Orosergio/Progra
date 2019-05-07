@@ -38,10 +38,10 @@ public class Colas {
                 break;
             case 4:
                 if(list1.estaVacia()==true){
-                 JOptionPane.showMessageDialog(null, "La lista esta vacia ");
+                 JOptionPane.showMessageDialog(null, "La Cola esta vacia ");
                 
                 }else{
-                     JOptionPane.showMessageDialog(null, "La lista contiene datos ");
+                     JOptionPane.showMessageDialog(null, "La Cola contiene datos ");
                 }
                 break;
             case 5:
@@ -127,7 +127,7 @@ public class Colas {
     }
     public static void tamanio(){
         
-        JOptionPane.showMessageDialog(null, "El tamaño de la lista es de:  "+list1.contar());
+        JOptionPane.showMessageDialog(null, "El tamaño de la cola es de:  "+list1.contar());
     }
     
       
