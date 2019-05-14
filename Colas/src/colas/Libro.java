@@ -10,34 +10,36 @@ package colas;
  * @author alumno
  */
 public class Libro {
+    //Creacion de las variable principales
 	private String titulo;
 	private String autor;
 	private String isbn;
-	
+	//Creacion del constructor y asignacion de datos a las variables
         public Libro(String titulo, String autor, String isbn) {
 		this.titulo=titulo;
 		this.autor=autor;
 		this.isbn=isbn;
+                
 	}
 	public String getTitulo() {
-		return titulo;
+		return titulo;//Regresa el titulo
 	}
 	public String setTitulo() {
-		this.titulo=titulo;
+		this.titulo=titulo;//Coloca el titulo
             return null;
                 	}
 	public String getAutor() {
-		return autor;	
+		return autor;//Regresa el autor	
 	}
 	public String setAutor() {
-		this.autor=autor;
+		this.autor=autor;//Obtiene el valor y lo asigna a variable
             return null;
 	}
 	public String getIsbn() {
-		return isbn;
+		return isbn;//Regresa el isbn
 	}
 	public String setIsbn() {
-		this.isbn=isbn;
+		this.isbn=isbn;//Asigna valor obtenido a variable
             return null;
 	}
 

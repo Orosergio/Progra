@@ -11,12 +11,14 @@ import javax.swing.JOptionPane;
 push top esta llena estavacia pop vaciar
  */
 public class Pilas {
-
+//Declaracion de variables globales
     static String titulo="",isbn="",autor="";
     static int nv=0,nvs=0;
+    //Creacion de obtjeto tipo lista
      static Lista list1=new Lista();
     public static void main(String[] args) {
           int opcion=0;   
+          //Menu principal de pilas
         while(opcion!=7 ){
         String op=JOptionPane.showInputDialog(null,"     Bienvenido al Registro de Libros(PILAS) \n"+
                 "1.- Ingreso de un libro\n2.-Eliminación de un libro\n3.Longitud de la Lista-\n4.-Estado de la lista\n5.- Ver todos los libros\n6.Tope\n7.- Salir");
