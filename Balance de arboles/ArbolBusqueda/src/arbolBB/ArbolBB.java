@@ -17,7 +17,7 @@ public class ArbolBB {
     private Nodo raiz;
     int num_nodos;
     int alt;
-
+//Se inicializa el constructor
     public ArbolBB() {
         raiz = null;
     }
@@ -25,59 +25,59 @@ public class ArbolBB {
         if(r==null){
         return -1;
         }else{
-        return r.qe;
+        return r.intFacEq;
         } 
-    }
+    }//EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
     public Nodo rotaizq(Nodo r){
-    Nodo aux= r.izq;
-    r.izq=aux.der;
-    aux.der=r;
-    r.qe=Math.max(obtenerqe(r.izq), obtenerqe(r.der))+1;
-    aux.qe=Math.max(obtenerqe(aux.izq),obtenerqe(aux.der))+1;
+    Nodo aux= r.nodoIzquierda;
+    r.nodoIzquierda=aux.nodoDerecha;
+    aux.nodoDerecha=r;
+    r.intFacEq=Math.max(obtenerqe(r.nodoIzquierda), obtenerqe(r.nodoDerecha))+1;
+    aux.intFacEq=Math.max(obtenerqe(aux.nodoIzquierda),obtenerqe(aux.nodoDerecha))+1;
     return aux;
     }
         public Nodo rotader(Nodo r){
-    Nodo aux= r.der;
-    r.der=aux.izq;
-    aux.izq=r;
-    r.qe=Math.max(obtenerqe(r.izq), obtenerqe(r.der))+1;
-    aux.qe=Math.max(obtenerqe(aux.izq),obtenerqe(aux.der))+1;
+    Nodo aux= r.nodoDerecha;
+    r.nodoDerecha=aux.nodoIzquierda;
+    aux.nodoIzquierda=r;
+    r.intFacEq=Math.max(obtenerqe(r.nodoIzquierda), obtenerqe(r.nodoDerecha))+1;
+    aux.intFacEq=Math.max(obtenerqe(aux.nodoIzquierda),obtenerqe(aux.nodoDerecha))+1;
     return aux;
     }
         public Nodo rotadobleizq(Nodo r){
         Nodo aux;
-        r.izq=rotader(r.izq);
+        r.nodoIzquierda=rotader(r.nodoIzquierda);
         aux=rotaizq(r);
         return aux;
         }
         public Nodo rotadobleder(Nodo r){
         Nodo aux;
-        r.der=rotaizq(r.der);
+        r.nodoDerecha=rotaizq(r.nodoDerecha);
         aux=rotader(r);
         return aux;
         }
         public Nodo insertaravl(Nodo nuevo, Nodo sub){
         Nodo nuevop=sub;
-         if(nuevo.dato<sub.dato){
-             if(sub.izq==null){
-             sub.izq=nuevo;
+         if(nuevo.intdato<sub.intdato){
+             if(sub.nodoIzquierda==null){
+             sub.nodoIzquierda=nuevo;
              }else{
-             sub.izq=insertaravl(nuevo, sub.izq);
-            if(obtenerqe(sub.izq)-obtenerqe(sub.der)==2){
-            if(nuevo.dato<sub.izq.dato){
+             sub.nodoIzquierda=insertaravl(nuevo, sub.nodoIzquierda);
+            if(obtenerqe(sub.nodoIzquierda)-obtenerqe(sub.nodoDerecha)==2){
+            if(nuevo.intdato<sub.nodoIzquierda.intdato){
                 nuevop=rotaizq(sub);
             }else{
             nuevop=rotadobleizq(sub);
             }
             }
              }
-         }else if(nuevo.dato>sub.dato){
-         if(sub.der==null){
-         sub.der=nuevo;
+         }else if(nuevo.intdato>sub.intdato){
+         if(sub.nodoDerecha==null){
+         sub.nodoDerecha=nuevo;
          }else{
-         sub.der=insertaravl(nuevo,sub.der);
-         if(obtenerqe(sub.der)-obtenerqe(sub.izq)==2){
-             if(nuevo.dato>sub.der.dato){
+         sub.nodoDerecha=insertaravl(nuevo,sub.nodoDerecha);
+         if(obtenerqe(sub.nodoDerecha)-obtenerqe(sub.nodoIzquierda)==2){
+             if(nuevo.intdato>sub.nodoDerecha.intdato){
              nuevop=rotader(sub);
              }else{
              nuevop=rotadobleder(sub);
@@ -89,12 +89,12 @@ public class ArbolBB {
          System.out.println("Nodo duplicado, no se puede colocar nodos duplicados");
          }
          //actualizando altura
-         if((sub.izq==null)&&(sub.der!=null)){
-         sub.qe=sub.der.qe+1;
-         }else if((sub.der==null)&&(sub.izq!=null)){
-            sub.qe=sub.izq.qe+1;         
+         if((sub.nodoIzquierda==null)&&(sub.nodoDerecha!=null)){
+         sub.intFacEq=sub.nodoDerecha.intFacEq+1;
+         }else if((sub.nodoDerecha==null)&&(sub.nodoIzquierda!=null)){
+            sub.intFacEq=sub.nodoIzquierda.intFacEq+1;         
          }else{
-         sub.qe=Math.max(obtenerqe(sub.izq),obtenerqe(sub.der))+1;         
+         sub.intFacEq=Math.max(obtenerqe(sub.nodoIzquierda),obtenerqe(sub.nodoDerecha))+1;         
          }
          return nuevop;
         }
@@ -106,7 +106,7 @@ public class ArbolBB {
         raiz=insertaravl(nuevo,raiz);
         }
         return true;
-        }
+        }//EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
     public Nodo getRaiz() {
         return raiz;
     } 
@@ -125,8 +125,8 @@ public class ArbolBB {
     public void preorden(Nodo aux, LinkedList recorrido) {
         if (aux != null) {
             recorrido.add(aux.getDato());
-            preorden(aux.getIzq(), recorrido);
-            preorden(aux.getDer(), recorrido);
+            preorden(aux.getIzquierda(), recorrido);
+            preorden(aux.getDerecha(), recorrido);
         }
     }
 
@@ -139,9 +139,9 @@ public class ArbolBB {
     
     public void inorden(Nodo aux, LinkedList recorrido) {
         if (aux != null) {
-            inorden(aux.getIzq(), recorrido);
+            inorden(aux.getIzquierda(), recorrido);
             recorrido.add(aux.getDato());
-            inorden(aux.getDer(), recorrido);
+            inorden(aux.getDerecha(), recorrido);
         }
     }
 
@@ -153,8 +153,8 @@ public class ArbolBB {
     }
     public void postorden(Nodo aux, LinkedList recorrido) {
         if (aux != null) {
-            postorden(aux.getIzq(), recorrido);
-            postorden(aux.getDer(), recorrido);
+            postorden(aux.getIzquierda(), recorrido);
+            postorden(aux.getDerecha(), recorrido);
             recorrido.add(aux.getDato());
         }
     }
@@ -166,9 +166,9 @@ public class ArbolBB {
             if (dato == aux.getDato()) {
                 return true;
             } else if (dato > aux.getDato()) {
-                aux = aux.getDer();
+                aux = aux.getDerecha();
             } else {
-                aux = aux.getIzq();
+                aux = aux.getIzquierda();
             }
         }
         return false;

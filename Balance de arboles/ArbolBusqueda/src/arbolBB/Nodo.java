@@ -7,41 +7,42 @@ package arbolBB;
 
 /**
  *
- * @author
+ * @Yavhé Sergio Enrique Orozco Valle
+ * 0901-17-6739
  */
 public class Nodo {
-    public int dato, qe;
-    public Nodo izq,der;
-
-    public Nodo(int dato, Nodo izq, Nodo der) {
-        this.dato = dato;
-        this.izq = izq;
-        this.der = der;
-        this.qe=0;
+    public int intdato, intFacEq;
+    public Nodo nodoIzquierda,nodoDerecha;
+    //Inicializa el constructor de la clase Nodo
+    public Nodo(int dato, Nodo izq, Nodo der) {//Recibe parametros 
+        this.intdato = dato; //Asignacion a variables lo recibido en parametros
+        this.nodoIzquierda = izq;
+        this.nodoDerecha = der;
+        this.intFacEq=0;//Inicializacion de la variable factor de equilibrio
     }
 
     public int getDato() {
-        return dato;
+        return intdato;//retorna dato
     }
 
     public void setDato(int dato) {
-        this.dato = dato;
+        this.intdato = dato; //Asigna a variable el dato obtenido
     }
 
-    public Nodo getIzq() {
-        return izq;
+    public Nodo getIzquierda() {
+        return nodoIzquierda;//retorna el nodo
     }
 
-    public void setIzq(Nodo izq) {
-        this.izq = izq;
+    public void setIzquierda(Nodo izq) {
+        this.nodoIzquierda = izq; //Asigna valor obtenido a variable
     }
 
-    public Nodo getDer() {
-        return der;
+    public Nodo getDerecha() {
+        return nodoDerecha;//Retorna derecha
     }
 
-    public void setDer(Nodo der) {
-        this.der = der;
+    public void setDerecha(Nodo der) {
+        this.nodoDerecha = der;//Asignacion a variable
     }
  
 }

@@ -4,7 +4,7 @@
  */
 package arbolBB;
 
-
+//Importacion de las librerias
 import java.awt.BorderLayout;
 import java.awt.Rectangle;
 import javax.swing.JInternalFrame;
@@ -16,12 +16,13 @@ import javax.swing.JOptionPane;
  * @author
  */
 public class Vistaa extends javax.swing.JFrame {
-
-    private SimuladorArbolBinario simulador = new SimuladorArbolBinario();
+    //Se crea una variable del tipo de la clase
+    private SimuladorArbolBinario SABsimulador = new SimuladorArbolBinario();
 
     /**
      * Creates new form Vista
      */
+    //Se inicializa el constructor de la clase
     public Vistaa() {
         initComponents();
         this.inicializar(false);
@@ -33,6 +34,7 @@ public class Vistaa extends javax.swing.JFrame {
         this.InOrden.setEnabled(enable);
         this.PostOrden.setEnabled(enable);
         this.PreOrden.setEnabled(enable);
+        //Habilitación de los botones
     }
 
     /**
@@ -193,53 +195,53 @@ public class Vistaa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
-            int dato = Integer.parseInt(txtdato.getText());
-            if (this.simulador.insertar(dato)) {                
+            int dato = Integer.parseInt(txtdato.getText());//Obtiene el dato del la caja de texto
+            if (this.SABsimulador.insertar(dato)) {  //Inserta el dato obtenido en un metodo de la clase SimuladorArbolBinario              
                 this.inicializar(true);             
-                complementos();
+                complementos();//Llama al metodo complementos para pintar el arbol
         }
     }//GEN-LAST:event_botonInsertarActionPerformed
 
     private void InOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InOrdenActionPerformed
         // TODO add your handling code here:
-        String recorrido = null;
-        recorrido = this.simulador.inOrden();
+        String strRecorrido = null; //Inicializar una variable tipo string
+        strRecorrido = this.SABsimulador.inOrden();//Asignar a variable lo obtenido en el metodo inOrden de la clase SAB
         
-        this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.impresion.setText(""); //lIMPIAR ÁREA DONDE SE ESCRIBE 
+        this.impresion.setText(strRecorrido);//Asignar valor que tiene la variable stRecorrido a la caja de textooooo
     }//GEN-LAST:event_InOrdenActionPerformed
 
     private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
         // TODO add your handling code here:
-        String recorrido = null;
-        recorrido = this.simulador.preOrden();
+        String strRecorrido = null;//Inicializacion de la variable
+        strRecorrido = this.SABsimulador.preOrden();//Asignacion de valor a la variable del metodo de preOrden
         
         this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.impresion.setText(strRecorrido); //Escribe en la caja de texto lo que contenga la variable
     }//GEN-LAST:event_PreOrdenActionPerformed
 
     private void PostOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostOrdenActionPerformed
         // TODO add your handling code here:
-        String recorrido = null;
-        recorrido = this.simulador.postOrden();
+        String strRecorrido = null;//Inicializacion de la variable
+        strRecorrido = this.SABsimulador.postOrden();//Asignando a strRecorrido el valor que se obtuvo del metodo postorden
         
         this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.impresion.setText(strRecorrido);//Escribe en la caja de texto lo que contenga la variable
     }//GEN-LAST:event_PostOrdenActionPerformed
 
     public void complementos(){
-        this.repintarArbol();
+        this.repintarArbol();//Creacion de metodo dentro otro metodo
     }
     private void repintarArbol() {
-        this.jDesktopPane1.removeAll();
+        this.jDesktopPane1.removeAll(); //Remover todos los elementos
         Rectangle tamaño = this.jInternalFrame2.getBounds();
         this.jInternalFrame2 = null;
-        this.jInternalFrame2 = new JInternalFrame("Representación gráfica", true);
+        this.jInternalFrame2 = new JInternalFrame("Representación gráfica", true);//Asignacion de titulo
         this.jDesktopPane1.add(this.jInternalFrame2, JLayeredPane.DEFAULT_LAYER);
         this.jInternalFrame2.setVisible(true);
         this.jInternalFrame2.setBounds(tamaño);
         this.jInternalFrame2.setEnabled(false);
-        this.jInternalFrame2.add(this.simulador.getDibujo(), BorderLayout.CENTER);
+        this.jInternalFrame2.add(this.SABsimulador.getDibujo(), BorderLayout.CENTER);
     }
 
     /**

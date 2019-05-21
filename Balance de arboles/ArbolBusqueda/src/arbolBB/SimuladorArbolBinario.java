@@ -11,51 +11,51 @@ import javax.swing.JPanel;
  */
 public class SimuladorArbolBinario {
 
-    ArbolBB miArbol = new ArbolBB();
+    ArbolBB ABBmiArbol = new ArbolBB();
 
     public SimuladorArbolBinario() {
     }
 
     public boolean insertar(Integer dato) {
-        return (this.miArbol.insertar(dato));
+        return (this.ABBmiArbol.insertar(dato));//Regresa el valor que se encuentra en el metodo
     }
     //metodo para mostrar los recorridos del arbol
     public String preOrden() {
-        LinkedList it = this.miArbol.preOrden();
-        return (recorrido(it, "Recorrido PreOrden"));
+        LinkedList lkit = this.ABBmiArbol.preOrden();
+        return (recorrido(lkit, "Recorrido PreOrden"));//regresa el calor que se encuentra en ese metodo
     }
 
     public String inOrden() {
-        LinkedList it = this.miArbol.inOrden();
-        return (recorrido(it, "Recorrido InOrden"));
+        LinkedList lkit = this.ABBmiArbol.inOrden();
+        return (recorrido(lkit, "Recorrido InOrden"));//regresa el calor que se encuentra en ese metodo
     }
 
     public String postOrden() {
-        LinkedList it = this.miArbol.postOrden();
-        return (recorrido(it, "Recorrido PosOrden"));
+        LinkedList lkit = this.ABBmiArbol.postOrden();
+        return (recorrido(lkit, "Recorrido PosOrden"));//regresa el calor que se encuentra en ese metodo
     }
     
     //metodo para poder mostrar los tipos d recorrido
-    private String recorrido(LinkedList it, String msg) {
+    private String recorrido(LinkedList lkit, String strmsg) {
         int i = 0;
-        String r = msg + "\n";
-        while (i < it.size()) {
-            r += "\t" + it.get(i).toString() + "";
+        String strr = strmsg + "\n"; //Muesta mensaje y un salto de pagina
+        while (i < lkit.size()) {//Entra en un bucle 
+            strr += "\t" + lkit.get(i).toString() + "";
             i++;
         }
-        return (r);
+        return (strr);
     }
     
     
     //Metodo para buscar dato en el nodo
-    public String buscar(Integer dato) {
-        boolean siEsta = this.miArbol.existe(dato);
-        String r = "El dato:" + dato.toString() + "\n";
-        r += siEsta ? "Si se encuentra en el arbol" : "No se encuentra en el arbol";
-        return (r);
+    public String buscar(Integer intdato) {
+        boolean boolsiEsta = this.ABBmiArbol.existe(intdato); //Pone en variable booleana lo que esta en ese metodo
+        String strr = "El dato:" + intdato.toString() + "\n";//Muesta un mensaje con el dato
+        strr += boolsiEsta ? "Si se encuentra en el arbol" : "No se encuentra en el arbol";//Verificacion de existencia
+        return (strr);
     }
 
     public JPanel getDibujo() {
-        return this.miArbol.getdibujo();
+        return this.ABBmiArbol.getdibujo();
     }
 }
